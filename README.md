@@ -1,4 +1,4 @@
-## My Project
+# Multi-AWS Account Architectures with Amazon VPC Lattice (Terraform)
 
 TODO: Fill this README out!
 
