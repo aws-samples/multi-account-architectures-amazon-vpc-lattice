@@ -4,7 +4,7 @@ In this example, we are showing a multi-Account environment with [Amazon VPC Lat
 
 Why this specific pattern for a distributed model? Well, given there's a limit of 1:1 in terms of VPC association to a service network, makes sense that the consumer AWS Accounts are the ones owning and controlling the service networks, and then decide which services to consume - given the VPC service association to a service network is 1:many.
 
-[ADD DIAGRAM]
+![Distributed diagram](../images/distributed.png)
 
 An application can both consume services and be the target of another one. However, in this example we are supposing that the consumer and service provider are in different VPCs (and AWS Accounts), so we have 2 AWS Accounts involved in the architecture. Aside VPC Lattice resources, this example also deploys the following:
 

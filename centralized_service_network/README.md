@@ -2,7 +2,7 @@
 
 In this example, we are showing a multi-Account environment with [Amazon VPC Lattice](https://docs.aws.amazon.com/vpc-lattice/latest/ug/what-is-vpc-lattice.html), focusing on a centralized service network pattern. A central AWS Account will own and manage the VPC Lattice [service networks](https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-networks.html), while spoke AWS Accounts will be the ones creating the VPC Lattice [services](https://docs.aws.amazon.com/vpc-lattice/latest/ug/services.html) and [associating their VPCs](https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html) to the service network.
 
-[ADD DIAGRAM]
+![Centralized diagram](../images/centralized.png)
 
 An application can both consume services and be the target of another one. However, in this example we are supposing that the consumer and service provider are in different VPCs (and AWS Accounts), so we have 3 AWS Accounts involved in the architecture. Aside VPC Lattice resources, this example also deploys the following:
 
