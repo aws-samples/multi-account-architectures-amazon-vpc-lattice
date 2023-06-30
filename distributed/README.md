@@ -28,7 +28,7 @@ An application can both consume services and be the target of another one. Howev
 
 ```
 git clone [ADD REPO LINK]
-cd centralized_service_network
+cd distributed
 ```
 
 * Edit the *variables.tf* in each folder to configure your environments:
