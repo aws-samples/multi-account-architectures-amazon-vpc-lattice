@@ -1,3 +1,7 @@
+/* Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: MIT-0 */
+
+# --- centralized_service_network/service-network-account/main.tf ---
 
 # AWS Account
 data "aws_caller_identity" "account" {}
@@ -5,7 +9,8 @@ data "aws_caller_identity" "account" {}
 # ---------- AMAZON VPC LATTICE (SERVICE NETWORK) ----------
 # VPC Lattice Module
 module "vpclattice_service_network" {
-  source = "git@github.com:pablo19sc/terraform-aws-amazon-vpc-lattice-module"
+  source  = "aws-ia/amazon-vpc-lattice-module/aws"
+  version = "0.0.2"
 
   service_network = {
     name        = "centralized-service-network"
@@ -36,7 +41,7 @@ locals {
 # ---------- AWS SECRETS MANAGER ----------
 # Secret: Service Network
 resource "aws_secretsmanager_secret" "service_network" {
-  name                    = "central_service_network"
+  name                    = "service_network"
   description             = "VPC Lattice Service Network ARN"
   kms_key_id              = aws_kms_key.secrets_key.arn
   policy                  = data.aws_iam_policy_document.secrets_resource_policy_reading.json
@@ -57,7 +62,7 @@ resource "aws_secretsmanager_secret_version" "service_network" {
 
 # Secret: Services
 resource "aws_secretsmanager_secret" "lattice_services" {
-  name                    = "vpc_lattice_services"
+  name                    = "vpclattice_services"
   description             = "VPC Lattice Services information."
   kms_key_id              = aws_kms_key.secrets_key.arn
   policy                  = data.aws_iam_policy_document.secrets_resource_policy_writing.json

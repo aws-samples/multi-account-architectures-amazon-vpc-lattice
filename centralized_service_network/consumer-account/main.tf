@@ -1,7 +1,11 @@
+/* Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: MIT-0 */
+
+# --- centralized_service_network/consumer-account/main.tf ---
 
 # ---------- SECRETS MANAGER - OBTAINING LATTICE SERVICE NETWORK ----------
 data "aws_secretsmanager_secret" "service_network" {
-  arn = "arn:aws:secretsmanager:${var.aws_region}:${var.central_aws_account}:secret:central_service_network"
+  arn = "arn:aws:secretsmanager:${var.aws_region}:${var.central_aws_account}:secret:service_network"
 }
 
 data "aws_secretsmanager_secret_version" "service_network" {
@@ -20,7 +24,8 @@ resource "aws_ram_resource_share_accepter" "share_accepter" {
 # ---------- AMAZON VPC LATTICE VPC ASSOCIATIONS ----------
 # Option 1: Using VPC Lattice TF module
 module "vpc_lattice_vpc_association" {
-  source = "git@github.com:pablo19sc/terraform-aws-amazon-vpc-lattice-module"
+  source  = "aws-ia/amazon-vpc-lattice-module/aws"
+  version = "0.0.2"
 
   service_network = { identifier = local.service_network.id }
 
@@ -147,6 +152,8 @@ module "compute" {
   ami_id               = data.aws_ami.amazon_linux.id
   ec2_security_group   = local.security_groups.instance
   iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.id
+
+  depends_on = [module.endpoints]
 }
 
 # SSM VPC endpoints

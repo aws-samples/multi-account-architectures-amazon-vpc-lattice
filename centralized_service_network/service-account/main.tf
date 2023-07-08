@@ -1,8 +1,13 @@
+/* Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: MIT-0 */
+
+# --- centralized_service_network/service-account/main.tf ---
 
 # ---------- VPC LATTICE SERVICE ----------
 # VPC Lattice Module
 module "vpc_lattice_service" {
-  source = "git@github.com:pablo19sc/terraform-aws-amazon-vpc-lattice-module"
+  source  = "aws-ia/amazon-vpc-lattice-module/aws"
+  version = "0.0.2"
 
   services = {
     lambdaservice = {
@@ -60,7 +65,7 @@ locals {
 
 # Getting the Secrets Manager secret and add the VPC Lattice service information
 data "aws_secretsmanager_secret" "vpc_lattice_services" {
-  arn = "arn:aws:secretsmanager:${var.aws_region}:${var.central_aws_account}:secret:vpc_lattice_services"
+  arn = "arn:aws:secretsmanager:${var.aws_region}:${var.central_aws_account}:secret:vpclattice_services"
 }
 
 resource "aws_secretsmanager_secret_version" "vpc_lattice_service" {

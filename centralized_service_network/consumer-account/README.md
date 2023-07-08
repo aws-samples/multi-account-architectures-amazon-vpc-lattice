@@ -19,7 +19,7 @@ No requirements.
 | <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | ../../modules/endpoints | n/a |
 | <a name="module_vpc1"></a> [vpc1](#module\_vpc1) | aws-ia/vpc/aws | 4.3.0 |
 | <a name="module_vpc2"></a> [vpc2](#module\_vpc2) | aws-ia/vpc/aws | 4.3.0 |
-| <a name="module_vpc_lattice_vpc_association"></a> [vpc\_lattice\_vpc\_association](#module\_vpc\_lattice\_vpc\_association) | git@github.com:pablo19sc/terraform-aws-amazon-vpc-lattice-module | n/a |
+| <a name="module_vpc_lattice_vpc_association"></a> [vpc\_lattice\_vpc\_association](#module\_vpc\_lattice\_vpc\_association) | aws-ia/amazon-vpc-lattice-module/aws | 0.0.2 |
 
 ## Resources
 
