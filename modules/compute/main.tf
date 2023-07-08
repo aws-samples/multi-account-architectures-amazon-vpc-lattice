@@ -1,3 +1,7 @@
+/* Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: MIT-0 */
+
+# --- modules/compute/main.tf ---
 
 # EC2 instances
 resource "aws_instance" "ec2_instance" {

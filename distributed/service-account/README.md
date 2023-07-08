@@ -19,7 +19,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_vpc_lattice_service"></a> [vpc\_lattice\_service](#module\_vpc\_lattice\_service) | git@github.com:pablo19sc/terraform-aws-amazon-vpc-lattice-module | n/a |
+| <a name="module_vpc_lattice_service"></a> [vpc\_lattice\_service](#module\_vpc\_lattice\_service) | aws-ia/amazon-vpc-lattice-module/aws | 0.0.2 |
 
 ## Resources
 

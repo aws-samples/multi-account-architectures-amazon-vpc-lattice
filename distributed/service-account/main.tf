@@ -1,3 +1,7 @@
+/* Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: MIT-0 */
+
+# --- distributed/service-account/main.tf ---
 
 # AWS Account
 data "aws_caller_identity" "account" {}
@@ -5,7 +9,8 @@ data "aws_caller_identity" "account" {}
 # ---------- VPC LATTICE SERVICE ----------
 # VPC Lattice Module
 module "vpc_lattice_service" {
-  source = "git@github.com:pablo19sc/terraform-aws-amazon-vpc-lattice-module"
+  source  = "aws-ia/amazon-vpc-lattice-module/aws"
+  version = "0.0.2"
 
   services = {
     lambdaservice = {

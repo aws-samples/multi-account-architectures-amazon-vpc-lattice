@@ -1,4 +1,4 @@
-# Amazon VPC Lattice Reference Architectures - Multi-Account Distributed Service Networks
+# Amazon VPC Lattice - Multi-Account Distributed Service Networks
 
 In this example, we are showing a multi-Account environment with [Amazon VPC Lattice](https://docs.aws.amazon.com/vpc-lattice/latest/ug/what-is-vpc-lattice.html), focusing on a distributed service network pattern. The service provider AWS Accounts will be the ones creating the VPC Lattice [services](https://docs.aws.amazon.com/vpc-lattice/latest/ug/services.html), while the consumer AWS Accounts will own their own service networks and associate the services they want to consume.
 
@@ -10,6 +10,7 @@ An application can both consume services and be the target of another one. Howev
 
 * [AWS Resource Access Manager](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html) - to share the services between AWS Accounts
 * [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/index.html) secrets - to share the service IDs between AWS Accounts.
+  * [AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html) key to encrypt the secrets.
 * In the consumer AWS Account, Amazon VPCs, EC2 instances, and VPC endpoints (for [AWS Systems Manager session manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) access) are deployed to test service consumption.
 * In the service provider AWS Account, an [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) function is deployed.
 
@@ -27,7 +28,7 @@ An application can both consume services and be the target of another one. Howev
 * Clone the repository and move to the corresponding folder.
 
 ```
-git clone [ADD REPO LINK]
+git clone https://github.com/aws-samples/multi-account-architectures-amazon-vpc-lattice.git
 cd distributed
 ```
 
@@ -53,7 +54,7 @@ terraform apply
 
 ### Step 2: Amazon VPCs (consumer applications) and VPC Lattice resources - service network, service and VPC associations (*consumer-account*)
 
-Last thing is the consumer VPCs so we can test the service consumption. We are deploying two VPCs - each one of them with EC2 instances and VPC endpoints for SSM access - to show the two different ways to create VPC Lattice VPC associations with different Terraform modules: [VPC module](https://registry.terraform.io/modules/aws-ia/vpc/aws/latest) and VPC Lattice module. Per each VPC, a VPC Lattice service network is also deployed - and associated to it.
+Last thing is the consumer VPCs so we can test the service consumption. We are deploying two VPCs - each one of them with EC2 instances and VPC endpoints for SSM access - to show the two different ways to create VPC Lattice VPC associations with different Terraform modules: [VPC module](https://registry.terraform.io/modules/aws-ia/vpc/aws/latest) and [VPC Lattice module](https://registry.terraform.io/modules/aws-ia/amazon-vpc-lattice-module/aws/latest). Per each VPC, a VPC Lattice service network is also deployed - and associated to it.
 
 ```
 cd consumer-account

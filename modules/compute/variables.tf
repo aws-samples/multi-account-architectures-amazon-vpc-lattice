@@ -1,3 +1,7 @@
+/* Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: MIT-0 */
+
+# --- modules/compute/variables.tf ---
 
 variable "vpc_name" {
   type        = string
